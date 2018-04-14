@@ -11,6 +11,7 @@ import {
   View
 } from 'react-native';
 
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
     'Cmd+D or shake for dev menu',
@@ -34,6 +35,7 @@ export default class App extends Component<Props> {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
