@@ -6,32 +6,38 @@ export default class Cover extends Component<Props> {
     return (
       <View style = {styles.container}>
         <Text style = {styles.welcome}>
-          THIS IS THE COVERSCREEN FOR ONTRACK!
+          OnTrack
         </Text>
         <Text style ={styles.instructions}>
-          Sorry for shouting...
+          Your Best Delivery Pal!
         </Text>
       </View>
     );
   }
 }
 
+_navigateTo = (routeName: string) => {
+  const actionToDispatch = NavigationActions.reset({
+    index: 0,
+    actions: [NavigationActions.navigate({ routeName })]
+  })
+  this.props.navigation.dispatch(actionToDispatch)
+}
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#0b182d',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: 'red',
-  },
-  instructions: {
-    textAlign: 'center',
-    color: 'white',
-    marginBottom: 5,
-  },
+    container : {
+      backgroundColor : '#1e272e',
+      flex:1,
+      justifyContent:'center',
+      alignItems:'center',
+    },
+    welcome : {
+      fontSize : 60,
+      color : '#0be881',
+      fontWeight : 'bold',
+    },
+    instructions : {
+      fontSize : 20,
+      color : '#05c46b'
+    }
 });
