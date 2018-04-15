@@ -1,8 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+
 import React, { Component } from 'react';
 import {
   Platform,
@@ -10,6 +6,7 @@ import {
   Text,
   View
 } from 'react-native';
+import Cover from './Cover'
 
 
 const instructions = Platform.select({
@@ -21,7 +18,21 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  state = {
+    ready:false,
+  }
+
+  componentDidMount(){
+    //Splashscreen will dissapear after 2 seconds
+    setTimeout(()=>{
+      this.setState({ ready : true })
+    },2000)
+  }
+
   render() {
+    if (this.state.ready === false){
+      return <Cover />
+    }
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
