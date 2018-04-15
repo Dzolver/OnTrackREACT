@@ -34,13 +34,15 @@ export default class App extends Component<Props> {
       return <Cover />
     }
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-            Hi there! Welcome to OnTrack, your best delivery friend!</Text>
-        <Text style={styles.instructions}>
+      <View style = {styles.backgroundcontainer}>
+        <Text style = {styles.welcome}>
+          Welcome
         </Text>
-        <Text style={styles.instructions}>
-          {instructions}
+        <Text style = {styles.userlabel}>
+          Are you a User?
+        </Text>
+        <Text style = {styles.userlabel}>
+          Are you a Driver?
         </Text>
       </View>
     );
@@ -49,20 +51,19 @@ export default class App extends Component<Props> {
 
 
 const styles = StyleSheet.create({
-  container: {
+  backgroundcontainer: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#1e272e',
   },
   welcome: {
     fontSize: 20,
+    justifyContent: 'flex-start',
     textAlign: 'center',
-    margin: 10,
+    color : '#05c46b',
   },
-  instructions: {
+  userlabel:{
+    justifyContent: 'center',
     textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });

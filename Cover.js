@@ -18,14 +18,6 @@ export default class Cover extends Component<Props> {
   }
 }
 
-_navigateTo = (routeName: string) => {
-  const actionToDispatch = NavigationActions.reset({
-    index: 0,
-    actions: [NavigationActions.navigate({ routeName })]
-  })
-  this.props.navigation.dispatch(actionToDispatch)
-}
-
 const styles = StyleSheet.create({
     container : {
       backgroundColor : '#1e272e',
@@ -40,6 +32,6 @@ const styles = StyleSheet.create({
     },
     instructions : {
       fontSize : 20,
-      color : '#05c46b'
+      color : '#05c46b',
     }
 });
