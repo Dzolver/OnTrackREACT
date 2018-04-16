@@ -7,9 +7,10 @@ import {
   View,
   Button,
   ToastAndroid,
+  Image
 } from 'react-native';
 import Cover from './Cover'
-
+import LoginForm from './loginform'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -43,28 +44,11 @@ export default class App extends Component<Props> {
     return (
       <View style = {styles.maincontainer}>
         <View style = {styles.backgroundcontainer}>
-          <Text style = {styles.welcome}>
-            Welcome
-          </Text>
         </View>
-        <View style ={styles.logincontainer}>
-            <Text style = {styles.userlabel}>
-              Are you a User?
-            </Text>
-            <Button style = {styles.loginButton} title = 'user'>
-              <Text style ={styles.loginText}>
-                USER
-              </Text>
-            </Button>
-            <Text style = {styles.userlabel}>
-              Are you a Driver?
-            </Text>
-            <Button style = {styles.loginButton} title = 'driver'>
-              <Text style ={styles.loginText}>
-                DRIVER
-              </Text>
-            </Button>
-          </View>
+        <View style = {styles.logocontainer}>
+          <Image style = {styles.logo} source = {require('./images/trucking.png')}/>
+        </View>
+          <LoginForm />
       </View>
     );
   }
@@ -77,24 +61,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#1e272e',
   },
-  welcome: {
-    marginTop: 60,
-    fontSize: 20,
-    justifyContent: 'flex-start',
-    textAlign: 'center',
-    color : '#05c46b',
-  },
   userlabel:{
     justifyContent: 'center',
     textAlign: 'center',
   },
-  logincontainer:{
+  logocontainer:{
     flex: 2.5,
     alignItems: 'center',
-    backgroundColor: '#485460',
     marginBottom : 60,
     marginLeft : 20,
     marginRight : 20,
+    flexGrow :1,
+    justifyContent : 'center'
   },
   maincontainer:{
     flex:1,
@@ -108,5 +86,9 @@ const styles = StyleSheet.create({
     fontSize : 20,
     color : '#1e272e',
     fontWeight : 'bold',
+  },
+  logo:{
+    width:200,
+    height:200
   }
 });
