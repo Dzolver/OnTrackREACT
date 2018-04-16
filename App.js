@@ -4,7 +4,9 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
+  ToastAndroid,
 } from 'react-native';
 import Cover from './Cover'
 
@@ -28,22 +30,41 @@ export default class App extends Component<Props> {
       this.setState({ ready : true })
     },2000)
   }
-
+  toastUser(){
+    ToastAndroid.show('You are a user !', ToastAndroid.SHORT);
+  }
+  toastDriver(){
+    ToastAndroid.show('You are a driver !', ToastAndroid.SHORT);
+  }
   render() {
     if (this.state.ready === false){
       return <Cover />
     }
     return (
-      <View style = {styles.backgroundcontainer}>
-        <Text style = {styles.welcome}>
-          Welcome
-        </Text>
-        <Text style = {styles.userlabel}>
-          Are you a User?
-        </Text>
-        <Text style = {styles.userlabel}>
-          Are you a Driver?
-        </Text>
+      <View style = {styles.maincontainer}>
+        <View style = {styles.backgroundcontainer}>
+          <Text style = {styles.welcome}>
+            Welcome
+          </Text>
+        </View>
+        <View style ={styles.logincontainer}>
+            <Text style = {styles.userlabel}>
+              Are you a User?
+            </Text>
+            <Button style = {styles.loginButton} title = 'user'>
+              <Text style ={styles.loginText}>
+                USER
+              </Text>
+            </Button>
+            <Text style = {styles.userlabel}>
+              Are you a Driver?
+            </Text>
+            <Button style = {styles.loginButton} title = 'driver'>
+              <Text style ={styles.loginText}>
+                DRIVER
+              </Text>
+            </Button>
+          </View>
       </View>
     );
   }
@@ -57,6 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1e272e',
   },
   welcome: {
+    marginTop: 60,
     fontSize: 20,
     justifyContent: 'flex-start',
     textAlign: 'center',
@@ -65,5 +87,26 @@ const styles = StyleSheet.create({
   userlabel:{
     justifyContent: 'center',
     textAlign: 'center',
+  },
+  logincontainer:{
+    flex: 2.5,
+    alignItems: 'center',
+    backgroundColor: '#485460',
+    marginBottom : 60,
+    marginLeft : 20,
+    marginRight : 20,
+  },
+  maincontainer:{
+    flex:1,
+    backgroundColor : '#1e272e',
+  },
+  loginButton:{
+    margin : 60,
+    color : '#05c46b'
+  },
+  loginText:{
+    fontSize : 20,
+    color : '#1e272e',
+    fontWeight : 'bold',
   }
 });
