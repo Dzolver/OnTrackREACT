@@ -22,33 +22,33 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    ready:false,
+    ready: false,
   }
 
-  componentDidMount(){
+  componentDidMount() {
     //Splashscreen will dissapear after 2 seconds
-    setTimeout(()=>{
-      this.setState({ ready : true })
-    },2000)
+    setTimeout(() => {
+      this.setState({ ready: true })
+    }, 2000)
   }
-  toastUser(){
+  toastUser() {
     ToastAndroid.show('You are a user !', ToastAndroid.SHORT);
   }
-  toastDriver(){
+  toastDriver() {
     ToastAndroid.show('You are a driver !', ToastAndroid.SHORT);
   }
   render() {
-    if (this.state.ready === false){
+    if (this.state.ready === false) {
       return <Cover />
     }
     return (
-      <View style = {styles.maincontainer}>
-        <View style = {styles.backgroundcontainer}>
+      <View style={styles.maincontainer}>
+        <View style={styles.backgroundcontainer}>
         </View>
-        <View style = {styles.logocontainer}>
-          <Image style = {styles.logo} source = {require('./images/trucking.png')}/>
+        <View style={styles.logocontainer}>
+          <Image style={styles.logo} source={require('./images/trucking.png')} />
         </View>
-          <LoginForm />
+        <LoginForm />
       </View>
     );
   }
@@ -61,34 +61,34 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#1e272e',
   },
-  userlabel:{
+  userlabel: {
     justifyContent: 'center',
     textAlign: 'center',
   },
-  logocontainer:{
+  logocontainer: {
     flex: 2.5,
     alignItems: 'center',
-    marginBottom : 60,
-    marginLeft : 20,
-    marginRight : 20,
-    flexGrow :1,
-    justifyContent : 'center'
+    marginBottom: 60,
+    marginLeft: 20,
+    marginRight: 20,
+    flexGrow: 1,
+    justifyContent: 'center'
   },
-  maincontainer:{
-    flex:1,
-    backgroundColor : '#1e272e',
+  maincontainer: {
+    flex: 1,
+    backgroundColor: '#1e272e',
   },
-  loginButton:{
-    margin : 60,
-    color : '#05c46b'
+  loginButton: {
+    margin: 60,
+    color: '#05c46b'
   },
-  loginText:{
-    fontSize : 20,
-    color : '#1e272e',
-    fontWeight : 'bold',
+  loginText: {
+    fontSize: 20,
+    color: '#1e272e',
+    fontWeight: 'bold',
   },
-  logo:{
-    width:200,
-    height:200
+  logo: {
+    width: 200,
+    height: 200
   }
 });
