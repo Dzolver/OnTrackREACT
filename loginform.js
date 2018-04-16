@@ -8,18 +8,25 @@ import {
 } from 'react-native';
 
 export default class LoginForm extends Component {
-  state = {
-    username: '',
-    password: '',
+
+  //constructor method, to properly declare all needed variables
+  constructor(props) {
+    super(props);                                         // grab props from app component, if needed
+    this._checkDetails = this._checkDetails.bind(this);   // bind method 'this' to component 'this', to reference 'this.state' properly
+    this.state = {                                        // declare component state (note use of 'this' keyword)
+      username: '',
+      password: ''
+    };
   }
-  //checkDetails password or username check DOESNT WORK!! FIX
+
   _checkDetails() {
-    if (String(this.password) === '123') {
+    if (String(this.state.password) === '123') {          //reference state variable (note use of 'this.state.password', as opposed to 'this.state')
       ToastAndroid.show('Success!', ToastAndroid.SHORT);
     } else {
       ToastAndroid.show('Failed!', ToastAndroid.SHORT);
     }
   }
+
   //////////////////////////////////////////////////////////////
   render() {
     return (
