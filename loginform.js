@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 import {
   StyleSheet,
   View,
@@ -7,7 +8,7 @@ import {
   ToastAndroid
 } from 'react-native';
 
-export default class LoginForm extends Component {
+export default class loginForm extends Component {
 
   //constructor method, to properly declare all needed variables
   constructor(props) {
@@ -20,7 +21,7 @@ export default class LoginForm extends Component {
   }
 
   _checkDetails() {
-    if (String(this.state.password) === '123') {          //reference state variable (note use of 'this.state.password', as opposed to 'this.state')
+    if (String(this.state.username) === 'user' && String(this.state.password) === '123') {          //reference state variable (note use of 'this.state.password', as opposed to 'this.state')
       ToastAndroid.show('Success!', ToastAndroid.SHORT);
     } else {
       ToastAndroid.show('Failed!', ToastAndroid.SHORT);

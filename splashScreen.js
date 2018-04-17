@@ -11,16 +11,16 @@ import {
 } from 'react-native';
 import Cover from './Cover'
 import LoginForm from './loginform'
-//keep this code for reference
+//keep this code for reference purposes////////////////////
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
     'Cmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
-
+////////////////////////////////////////////////////////////
 type Props = {};
-export default class App extends Component<Props> {
+export default class splashScreen extends Component<Props> {
   state = {
     ready: false,
   }
@@ -31,12 +31,7 @@ export default class App extends Component<Props> {
       this.setState({ ready: true })
     }, 2000)
   }
-  toastUser() {
-    ToastAndroid.show('You are a user !', ToastAndroid.SHORT);
-  }
-  toastDriver() {
-    ToastAndroid.show('You are a driver !', ToastAndroid.SHORT);
-  }
+
   render() {
     if (this.state.ready === false) {
       return <Cover />
@@ -48,7 +43,7 @@ export default class App extends Component<Props> {
         <View style={styles.logocontainer}>
           <Image style={styles.logo} source={require('./images/trucking.png')} />
         </View>
-        <LoginForm />
+        <loginForm />
       </View>
     );
   }
