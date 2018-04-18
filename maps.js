@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 type Props = {};
-export default class maps extends Component<Props> {
+export default class Maps extends Component<Props> {
   state ={
     //insert state variables here
   }

@@ -1,5 +1,5 @@
-
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 import {
   Platform,
   StyleSheet,
@@ -9,8 +9,11 @@ import {
   ToastAndroid,
   Image
 } from 'react-native';
+
 import Cover from './Cover'
-import LoginForm from './loginform'
+import Maps from './maps';
+import LoginFormWrapper from './loginform';
+
 //keep this code for reference
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -19,40 +22,78 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+const RootStack = StackNavigator(
+  {
+    Cover: {
+      screen: Cover
+    },
+    LoginForm: {
+      screen: LoginFormWrapper
+    },
+    Maps: {
+      screen: Maps
+    }
+  },
+  {
+    initialRouteName: 'LoginForm',
+  }
+);
+
+export default class App extends React.Component {
+
   state = {
     ready: false,
   }
 
   componentDidMount() {
-    //Splashscreen will dissapear after 2 seconds
+    //Splashscreen will disappear after 2 seconds
     setTimeout(() => {
       this.setState({ ready: true })
     }, 2000)
   }
-  toastUser() {
-    ToastAndroid.show('You are a user !', ToastAndroid.SHORT);
-  }
-  toastDriver() {
-    ToastAndroid.show('You are a driver !', ToastAndroid.SHORT);
-  }
+
   render() {
     if (this.state.ready === false) {
       return <Cover />
     }
-    return (
-      <View style={styles.maincontainer}>
-        <View style={styles.backgroundcontainer}>
-        </View>
-        <View style={styles.logocontainer}>
-          <Image style={styles.logo} source={require('./images/trucking.png')} />
-        </View>
-        <LoginForm />
-      </View>
-    );
+    return <RootStack />;
   }
 }
+
+// type Props = {};
+// export default class App extends Component<Props> {
+//   state = {
+//     ready: false,
+//   }
+
+//   componentDidMount() {
+//     //Splashscreen will dissapear after 2 seconds
+//     setTimeout(() => {
+//       this.setState({ ready: true })
+//     }, 2000)
+//   }
+//   toastUser() {
+//     ToastAndroid.show('You are a user !', ToastAndroid.SHORT);
+//   }
+//   toastDriver() {
+//     ToastAndroid.show('You are a driver !', ToastAndroid.SHORT);
+//   }
+//   render() {
+//     if (this.state.ready === false) {
+//       return <Cover />
+//     }
+//     return (
+//       <View style={styles.maincontainer}>
+//         <View style={styles.backgroundcontainer}>
+//         </View>
+//         <View style={styles.logocontainer}>
+//           <Image style={styles.logo} source={require('./images/trucking.png')} />
+//         </View>
+//         <LoginForm />
+//       </View>
+//     );
+//   }
+// }
 
 
 const styles = StyleSheet.create({

@@ -5,10 +5,11 @@ import {
   View,
   TextInput,
   Button,
-  ToastAndroid
+  ToastAndroid,
+  Image
 } from 'react-native';
 
-export default class loginForm extends Component {
+export default class LoginFormWrapper extends Component {
 
   //constructor method, to properly declare all needed variables
   constructor(props) {
@@ -23,28 +24,35 @@ export default class loginForm extends Component {
   _checkDetails() {
     if (String(this.state.username) === 'user' && String(this.state.password) === '123') {          //reference state variable (note use of 'this.state.password', as opposed to 'this.state')
       ToastAndroid.show('Success!', ToastAndroid.SHORT);
+      this.props.navigation.navigate('Maps');
     } else {
       ToastAndroid.show('Failed!', ToastAndroid.SHORT);
     }
   }
 
-  //////////////////////////////////////////////////////////////
   render() {
     return (
-      <View style={styles.container}>
-        <TextInput
-          placeholder="Username or Email"
-          placeholderTextColor="rgba(255,255,255,0.7)"
-          underlineColorAndroid="transparent"
-          onChangeText={(username) => this.setState({ username })}
-          style={styles.input} />
-        <TextInput
-          placeholder="Password"
-          placeholderTextColor="rgba(255,255,255,0.7)"
-          underlineColorAndroid="transparent"
-          onChangeText={(password) => this.setState({ password })}
-          style={styles.input} />
-        <Button onPress={this._checkDetails} title='login' />
+      <View style={styles.maincontainer}>
+        <View style={styles.backgroundcontainer}>
+        </View>
+        <View style={styles.logocontainer}>
+          <Image style={styles.logo} source={require('./images/trucking.png')} />
+        </View>
+        <View style={styles.container}>
+          <TextInput
+            placeholder="Username or Email"
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            underlineColorAndroid="transparent"
+            onChangeText={(username) => this.setState({ username })}
+            style={styles.input} />
+          <TextInput
+            placeholder="Password"
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            underlineColorAndroid="transparent"
+            onChangeText={(password) => this.setState({ password })}
+            style={styles.input} />
+          <Button onPress={this._checkDetails} title='login' />
+        </View>
       </View>
     );
   }
@@ -60,5 +68,40 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: '#FFF',
     paddingHorizontal: 10
+  },
+  backgroundcontainer: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#1e272e',
+  },
+  userlabel: {
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+  logocontainer: {
+    flex: 2.5,
+    alignItems: 'center',
+    marginBottom: 60,
+    marginLeft: 20,
+    marginRight: 20,
+    flexGrow: 1,
+    justifyContent: 'center'
+  },
+  maincontainer: {
+    flex: 1,
+    backgroundColor: '#1e272e',
+  },
+  loginButton: {
+    margin: 60,
+    color: '#05c46b'
+  },
+  loginText: {
+    fontSize: 20,
+    color: '#1e272e',
+    fontWeight: 'bold',
+  },
+  logo: {
+    width: 200,
+    height: 200
   }
 });
