@@ -5,6 +5,7 @@ import {
   Image,
   StyleSheet
 } from 'react-native';
+import MapView from 'react-native-maps';
 
 type Props = {};
 export default class Maps extends Component<Props> {
