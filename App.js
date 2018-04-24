@@ -34,13 +34,16 @@ const RootStack = StackNavigator(
       screen: Maps
     }
   },
-  {
+  {//Hiding the nav bar
     initialRouteName: 'LoginForm',
+    headerMode: 'none',
+    navigationOptions:{
+      headerVisible: false,
+    }
   }
 );
 
 export default class App extends React.Component {
-
   state = {
     ready: false,
   }
@@ -59,42 +62,6 @@ export default class App extends React.Component {
     return <RootStack />;
   }
 }
-
-// type Props = {};
-// export default class App extends Component<Props> {
-//   state = {
-//     ready: false,
-//   }
-
-//   componentDidMount() {
-//     //Splashscreen will dissapear after 2 seconds
-//     setTimeout(() => {
-//       this.setState({ ready: true })
-//     }, 2000)
-//   }
-//   toastUser() {
-//     ToastAndroid.show('You are a user !', ToastAndroid.SHORT);
-//   }
-//   toastDriver() {
-//     ToastAndroid.show('You are a driver !', ToastAndroid.SHORT);
-//   }
-//   render() {
-//     if (this.state.ready === false) {
-//       return <Cover />
-//     }
-//     return (
-//       <View style={styles.maincontainer}>
-//         <View style={styles.backgroundcontainer}>
-//         </View>
-//         <View style={styles.logocontainer}>
-//           <Image style={styles.logo} source={require('./images/trucking.png')} />
-//         </View>
-//         <LoginForm />
-//       </View>
-//     );
-//   }
-// }
-
 
 const styles = StyleSheet.create({
   backgroundcontainer: {
