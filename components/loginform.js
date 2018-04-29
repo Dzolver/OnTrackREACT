@@ -14,6 +14,7 @@ export default class LoginFormWrapper extends Component {
   //constructor method, to properly declare all needed variables
   constructor(props) {
     super(props);                                         // grab props from app component, if needed
+    this._startSignUp = this._startSignUp.bind(this);
     this._checkDetails = this._checkDetails.bind(this);   // bind method 'this' to component 'this', to reference 'this.state' properly
     this.state = {                                        // declare component state (note use of 'this' keyword)
       username: '',
@@ -28,6 +29,10 @@ export default class LoginFormWrapper extends Component {
     } else {
       ToastAndroid.show('Failed!', ToastAndroid.SHORT);
     }
+  }
+
+  _startSignUp() {
+    this.props.navigation.navigate('signupForm');
   }
 
   render() {
@@ -52,6 +57,9 @@ export default class LoginFormWrapper extends Component {
             onChangeText={(password) => this.setState({ password })}
             style={styles.input} />
           <Button onPress={this._checkDetails} title='login' />
+          <Button onPress={this._startSignUp} title='First Time? Sign Up!'
+          color = '#05c46b'
+          />
         </View>
       </View>
     );
@@ -90,15 +98,6 @@ const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,
     backgroundColor: '#1e272e',
-  },
-  loginButton: {
-    margin: 60,
-    color: '#05c46b'
-  },
-  loginText: {
-    fontSize: 20,
-    color: '#1e272e',
-    fontWeight: 'bold',
   },
   logo: {
     width: 200,

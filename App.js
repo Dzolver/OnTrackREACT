@@ -13,6 +13,7 @@ import {
 import Cover from './components/Cover'
 import Maps from './maps';
 import LoginFormWrapper from './components/loginform';
+import signupForm from './components/signupForm';
 
 //keep this code for reference
 const instructions = Platform.select({
@@ -32,6 +33,9 @@ const RootStack = StackNavigator(
     },
     Maps: {
       screen: Maps
+    },
+    signupForm: {
+      screen: signupForm
     }
   },
   {//Hiding the nav bar
