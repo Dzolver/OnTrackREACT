@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import App from './App'
 
 export default class Cover extends Component<Props> {
   render(){

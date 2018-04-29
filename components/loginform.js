@@ -36,7 +36,7 @@ export default class LoginFormWrapper extends Component {
         <View style={styles.backgroundcontainer}>
         </View>
         <View style={styles.logocontainer}>
-          <Image style={styles.logo} source={require('./images/trucking.png')} />
+          <Image style={styles.logo} source={require('./trucking.png')} />
         </View>
         <View style={styles.container}>
           <TextInput

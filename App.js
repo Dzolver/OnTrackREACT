@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StackNavigator } from 'react-navigation';
 import {
   Platform,
@@ -10,9 +10,9 @@ import {
   Image
 } from 'react-native';
 
-import Cover from './Cover'
+import Cover from './components/Cover'
 import Maps from './maps';
-import LoginFormWrapper from './loginform';
+import LoginFormWrapper from './components/loginform';
 
 //keep this code for reference
 const instructions = Platform.select({
@@ -44,6 +44,7 @@ const RootStack = StackNavigator(
 );
 
 export default class App extends React.Component {
+
   state = {
     ready: false,
   }
@@ -54,7 +55,6 @@ export default class App extends React.Component {
       this.setState({ ready: true })
     }, 2000)
   }
-
   render() {
     if (this.state.ready === false) {
       return <Cover />

@@ -9,8 +9,9 @@ import {
   ToastAndroid,
   Image
 } from 'react-native';
-import Cover from './Cover'
-import LoginForm from './loginform'
+import Cover from './components/Cover'
+import LoginForm from './components/loginform'
+
 //keep this code for reference purposes////////////////////
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
