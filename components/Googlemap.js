@@ -16,8 +16,8 @@ componentDidMount() {
   this.watchID = navigator.geolocation.watchPosition((position) => {
     // Create the object to update this.state.mapRegion through the onRegionChange function
     let region = {
-      latitude:       position.coords.latitude,
-      longitude:      position.coords.longitude,
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
       latitudeDelta:  0.01,
       longitudeDelta: 0.01
     }
