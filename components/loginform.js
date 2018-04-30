@@ -58,10 +58,14 @@ export default class LoginFormWrapper extends Component {
             underlineColorAndroid="transparent"
             onChangeText={(password) => this.setState({ password })}
             style={styles.input} />
-          <Button onPress={this._checkDetails} title='login' />
-          <Button onPress={this._startSignUp} title='First Time? Sign Up!'
-          color = '#05c46b'
-          />
+          <View style={{marginBottom:10}}>
+            <Button onPress={this._checkDetails} title='login' />
+          </View>
+          <View style={{marginBottom:10}}>
+            <Button onPress={this._startSignUp} title='First Time? Sign Up!'
+            color = '#05c46b'
+              />
+          </View>
         </View>
       </View>
     );
