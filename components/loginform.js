@@ -6,7 +6,8 @@ import {
   TextInput,
   Button,
   ToastAndroid,
-  Image
+  Image,
+  Keyboard
 } from 'react-native';
 
 export default class LoginFormWrapper extends Component {
@@ -25,6 +26,7 @@ export default class LoginFormWrapper extends Component {
   _checkDetails() {
     if (String(this.state.username) === 'user' && String(this.state.password) === '123') {          //reference state variable (note use of 'this.state.password', as opposed to 'this.state')
       ToastAndroid.show('Success!', ToastAndroid.SHORT);
+      Keyboard.dismiss();
       this.props.navigation.navigate('Maps');
     } else {
       ToastAndroid.show('Failed!', ToastAndroid.SHORT);
