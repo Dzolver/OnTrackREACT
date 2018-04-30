@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 export default class Cover extends Component<Props> {
@@ -12,6 +12,9 @@ export default class Cover extends Component<Props> {
         <Text style ={styles.instructions}>
           Your Best Delivery Pal!
         </Text>
+        <View style = {styles.activity}>
+          <ActivityIndicator size="large" color="#0be881" />
+        </View>
       </View>
     );
   }
@@ -32,5 +35,8 @@ const styles = StyleSheet.create({
     instructions : {
       fontSize : 20,
       color : '#05c46b',
+    },
+    activity : {
+      padding : 20
     }
 });
