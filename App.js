@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import Cover from './components/Cover'
-import Maps from './maps';
+import Googlemap from './components/Googlemap';
 import LoginFormWrapper from './components/loginform';
 import signupForm from './components/signupForm';
 
@@ -32,7 +32,7 @@ const RootStack = StackNavigator(
       screen: LoginFormWrapper
     },
     Maps: {
-      screen: Maps
+      screen: Googlemap
     },
     signupForm: {
       screen: signupForm
