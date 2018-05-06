@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
   overlay: {
     justifyContent: 'flex-end',
     zIndex: 0,
-    // backgroundColor: '#c6c6c6bf',
     backgroundColor: '#ffffffff',
     width: '100%',
     paddingHorizontal: 10,

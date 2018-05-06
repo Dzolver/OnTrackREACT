@@ -56,21 +56,27 @@ export default class Googlemap extends Component {
   render() {
     return (
       <View style={styles.backgroundcontainer}>
-        {/* MapView */}
-        <MapView style={styles.map}
-          region={this.state.mapRegion}
-          showsUserLocation={true}
-          followUserLocation={true}
-        >
-          <MapView.Marker
-            coordinate={{
-              latitude: this.state.lastLat,
-              longitude: this.state.lastLong
-            }}
-            title={'Your Location'}
-            description={'This is your latest location'}
-          />
-        </MapView>
+        <View style={styles.innerView}>
+          {/* MapView */}
+          <MapView style={styles.map}
+            region={this.state.mapRegion}
+            showsUserLocation={true}
+            followUserLocation={true}
+          >
+            <MapView.Marker
+              coordinate={{
+                latitude: this.state.lastLat,
+                longitude: this.state.lastLong
+              }}
+              title={'Your Location'}
+              description={'This is your latest location'}
+            />
+          </MapView>
+
+          <View style={styles.semitransparent} >
+            <Text style={styles.overlayText} >The item will be picked up from this address: Inndalsveien 28</Text>
+          </View>
+        </View>
 
         {/* Overlay */}
         <MapOverlay />
@@ -100,5 +106,22 @@ const styles = StyleSheet.create({
     // zIndex: 0
     width: '100%',
     flex: 1
+  },
+  semitransparent: {
+    // backgroundColor: '#c6c6c6bf',
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+    zIndex: 1,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    paddingHorizontal: 10,
+    paddingVertical: 15
+  },
+  innerView: {
+    width: '100%',
+    flex: 1
+  },
+  overlayText: {
+    color: 'white'
   }
 });
