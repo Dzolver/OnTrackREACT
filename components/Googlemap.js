@@ -3,6 +3,8 @@ import { View, Text, Image, StyleSheet, ToastAndroid, Button, TextInput, Select,
 import MapView from 'react-native-maps';
 import { StackNavigator } from 'react-navigation';
 
+import MapOverlay from "./mapOverlay";
+
 export default class Googlemap extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,6 @@ export default class Googlemap extends Component {
   _navigate(screen) {
     this.props.navigation.navigate(screen);
   }
-  _orderCar() { }
 
   componentDidMount() {
     this.watchID = navigator.geolocation.watchPosition((position) => {
@@ -55,100 +56,30 @@ export default class Googlemap extends Component {
   render() {
     return (
       <View style={styles.backgroundcontainer}>
-        {/* MapView */}
-        <MapView style={styles.map}
-          region={this.state.mapRegion}
-          showsUserLocation={true}
-          followUserLocation={true}
-        >
-          <MapView.Marker
-            coordinate={{
-              latitude: this.state.lastLat,
-              longitude: this.state.lastLong
-            }}
-            title={'Your Location'}
-            description={'This is your latest location'}
-          />
-        </MapView>
+        <View style={styles.innerView}>
+          {/* MapView */}
+          <MapView style={styles.map}
+            region={this.state.mapRegion}
+            showsUserLocation={true}
+            followUserLocation={true}
+          >
+            <MapView.Marker
+              coordinate={{
+                latitude: this.state.lastLat,
+                longitude: this.state.lastLong
+              }}
+              title={'Your Location'}
+              description={'This is your latest location'}
+            />
+          </MapView>
+
+          <View style={styles.semitransparent} >
+            <Text style={styles.overlayText} >The item will be picked up from this address: Inndalsveien 28</Text>
+          </View>
+        </View>
 
         {/* Overlay */}
-        <View style={styles.overlay}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <View style={{ width: '75%' }}>
-              <Text>Choose item to be picked up</Text>
-              <Picker
-                selectedValue={this.state.pickupItem}
-                style={{ width: '100%' }}
-                onValueChange={(itemValue, itemIndex) => this.setState({ pickupItem: itemValue })}
-                underlineColorAndroid="black">
-                <Picker.Item label="Cell Phone" value="cellPhone" />
-                <Picker.Item label="Item 1" value="item1" />
-                <Picker.Item label="Item 2" value="item2" />
-                <Picker.Item label="Item 3" value="item3" />
-                <Picker.Item label="Item 4" value="item4" />
-              </Picker>
-            </View>
-            <View style={{ width: '25%' }}>
-              <Text>Cost</Text>
-              <TextInput
-                placeholder="Kr"
-                placeholderTextColor="#000000ff"
-                underlineColorAndroid="black"
-                style={{ width: '100%' }}
-                onChangeText={(cost) => this.setState({ cost })}
-              />
-            </View>
-          </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <View style={{ width: '75%' }}>
-              <Text>Choose delivery address</Text>
-              <Picker
-                selectedValue={this.state.deliveryAddress}
-                style={{ width: '100%' }}
-                onValueChange={(itemValue, itemIndex) => this.setState({ deliveryAddress: itemValue })}
-                underlineColorAndroid="black">
-                <Picker.Item label="PRESTESTIEN 52 - 5118 Ulset" value="address0" />
-                <Picker.Item label="Address 1" value="address1" />
-                <Picker.Item label="Address 2" value="address2" />
-                <Picker.Item label="Address 3" value="address3" />
-                <Picker.Item label="Address 4" value="address4" />
-              </Picker>
-            </View>
-            <View style={{ width: '25%' }}>
-              <Text>Pickup time</Text>
-              <Picker
-                selectedValue={this.state.pickupTime}
-                style={{ width: '100%' }}
-                onValueChange={(itemValue, itemIndex) => this.setState({ pickupTime: itemValue })}
-                underlineColorAndroid="black">
-                <Picker.Item label="ASAP" value="time0" />
-                <Picker.Item label="Time 1" value="time1" />
-                <Picker.Item label="Time 2" value="time2" />
-                <Picker.Item label="Time 3" value="time3" />
-                <Picker.Item label="Time 4" value="time4" />
-              </Picker>
-            </View>
-          </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <View style={{ width: '75%' }}>
-              <Text>Payment method</Text>
-              <Picker
-                selectedValue={this.state.paymentMethod}
-                style={{ width: '100%' }}
-                onValueChange={(itemValue, itemIndex) => this.setState({ paymentMethod: itemValue })}
-                underlineColorAndroid="black">
-                <Picker.Item label="VIPPS" value="address0" />
-                <Picker.Item label="Payment Method 1" value="payment1" />
-                <Picker.Item label="Payment Method 2" value="payment2" />
-                <Picker.Item label="Payment Method 3" value="payment3" />
-                <Picker.Item label="Payment Method 4" value="payment4" />
-              </Picker>
-            </View>
-          </View>
-          <Button onPress={this._orderCar} title='Order car'
-            color='#4a8ce2'
-          />
-        </View>
+        <MapOverlay />
 
       </View>
     );
@@ -157,30 +88,40 @@ export default class Googlemap extends Component {
 const styles = StyleSheet.create({
   backgroundcontainer: {
     flex: 1,
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
     justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: '#1e272e'
+    // position: 'absolute',
+    // top: 0,
+    // left: 0,
+    // right: 0,
+    // bottom: 0,
   },
   map: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 0
+    // position: 'absolute',
+    // top: 0,
+    // left: 0,
+    // right: 0,
+    // bottom: 0,
+    // zIndex: 0
+    width: '100%',
+    flex: 1
   },
-  overlay: {
-    justifyContent: 'flex-end',
-    zIndex: 1,
+  semitransparent: {
     // backgroundColor: '#c6c6c6bf',
-    backgroundColor: '#ffffffff',
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+    zIndex: 1,
+    position: 'absolute',
+    bottom: 0,
     width: '100%',
     paddingHorizontal: 10,
     paddingVertical: 15
+  },
+  innerView: {
+    width: '100%',
+    flex: 1
+  },
+  overlayText: {
+    color: 'white'
   }
 });
