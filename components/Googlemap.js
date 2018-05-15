@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, ToastAndroid, Button, TextInput, Select, Picker } from 'react-native';
 import MapView from 'react-native-maps';
 import { StackNavigator } from 'react-navigation';
+import Geocoder from 'react-native-geocoding';
 
 import MapOverlay from "./mapOverlay";
 
@@ -13,6 +14,7 @@ export default class Googlemap extends Component {
       mapRegion: null,
       lastLat: 0,
       lastLong: 0,
+      formattedAddress: 'Please Wait',
 
       pickupItem: null,
       cost: 0,
@@ -35,7 +37,9 @@ export default class Googlemap extends Component {
         latitudeDelta: 0.01,
         longitudeDelta: 0.01
       }
+      Geocoder.init('AIzaSyBENmQq52QW2sdc19lv7tDTpVGkeYz23ks');
       this.onRegionChange(region, region.latitude, region.longitude);
+      this.reverseLocation(region.latitude, region.longitude);
     }, (error) => {
       ToastAndroid.show('Please turn on your GPS and mobile data!', ToastAndroid.SHORT);
       this._navigate('LoginForm');
@@ -48,6 +52,13 @@ export default class Googlemap extends Component {
       lastLat: lastLatitude || this.state.lastLat,
       lastLong: lastLongitude || this.state.lastLong
     });
+  }
+  reverseLocation(latitude, longitude) {
+    Geocoder.from(latitude, longitude)
+      .then(json => {
+        this.setState({ formattedAddress: json.results[0].formatted_address });
+      })
+      .catch(error => console.warn(error));
   }
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchID);
@@ -74,7 +85,7 @@ export default class Googlemap extends Component {
           </MapView>
 
           <View style={styles.semitransparent} >
-            <Text style={styles.overlayText} >The item will be picked up from this address: Inndalsveien 28</Text>
+            <Text style={styles.overlayText} >The item will be picked up from this address: {this.state.formattedAddress}</Text>
           </View>
         </View>
 
