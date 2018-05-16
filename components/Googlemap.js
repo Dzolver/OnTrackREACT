@@ -9,7 +9,7 @@ import MapOverlay from "./mapOverlay";
 export default class Googlemap extends Component {
   constructor(props) {
     super(props);
-    this._navigate = this._navigate.bind(this);
+    this.orderCar = this.orderCar.bind(this);
     this.state = {
       mapRegion: null,
       lastLat: 0,
@@ -24,8 +24,8 @@ export default class Googlemap extends Component {
     };
   }
 
-  _navigate(screen) {
-    this.props.navigation.navigate(screen);
+  orderCar() {
+    this.props.navigation.navigate('summary');
   }
 
   componentDidMount() {
@@ -90,7 +90,12 @@ export default class Googlemap extends Component {
         </View>
 
         {/* Overlay */}
-        <MapOverlay />
+          < View style={styles.overlay} >
+            <Button onPress={this.orderCar} title='Order car'
+              color='#4a8ce2'
+            />
+          </View >
+        
 
       </View>
     );

@@ -56,6 +56,7 @@ export default class LoginFormWrapper extends Component {
             placeholder="Password"
             placeholderTextColor="rgba(255,255,255,0.7)"
             underlineColorAndroid="transparent"
+            secureTextEntry={true}
             onChangeText={(password) => this.setState({ password })}
             style={styles.input} />
           <View style={{marginBottom:10}}>
@@ -78,15 +79,15 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    backgroundColor: 'rgba(255,255,255,0.7)',
+    backgroundColor: 'rgba(30,39,46,0.7)',
     marginBottom: 20,
     color: '#FFF',
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   backgroundcontainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#1e272e',
+    backgroundColor: '#ffffff',
   },
   userlabel: {
     justifyContent: 'center',
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
   maincontainer: {
     flex: 1,
-    backgroundColor: '#1e272e',
+    backgroundColor: '#ffffff',
   },
   logo: {
     width: 200,

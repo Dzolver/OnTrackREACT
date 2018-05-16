@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { StackNavigator } from 'react-navigation';
+import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import {
   Platform,
   StyleSheet,
@@ -14,6 +15,7 @@ import Cover from './components/Cover'
 import Googlemap from './components/Googlemap';
 import LoginFormWrapper from './components/loginform';
 import signupForm from './components/signupForm';
+import summary from './components/summary';
 
 //keep this code for reference
 const instructions = Platform.select({
@@ -36,6 +38,9 @@ const RootStack = StackNavigator(
     },
     signupForm: {
       screen: signupForm
+    },
+    summary: {
+      screen: summary
     }
   },
   {//Hiding the nav bar
@@ -43,7 +48,8 @@ const RootStack = StackNavigator(
     headerMode: 'none',
     navigationOptions:{
       headerVisible: false,
-    }
+    },
+    transitionConfig: getSlideFromRightTransition
   }
 );
 
