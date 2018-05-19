@@ -9,12 +9,15 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <Firebase.h>
 @import GoogleMaps;
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [FIRApp configure];
   NSURL *jsCodeLocation;
   [GMSServices provideAPIKey:@"AIzaSyBENmQq52QW2sdc19lv7tDTpVGkeYz23ks"];
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];

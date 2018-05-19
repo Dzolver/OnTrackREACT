@@ -11,15 +11,24 @@ import {
   Image
 } from 'react-native';
 
+import firebase from 'react-native-firebase';
+import login from './loginform'
+
 export default class signupForm extends Component {
 
   //constructor method, to properly declare all needed variables
   constructor(props) {
-    super(props);                                         // grab props from app component, if needed
+    super(props);
+    this.signUp = this.signUp.bind(this);                                        // grab props from app component, if needed
     this.state = {                                        // declare component state (note use of 'this' keyword)
       username: '',
       password: ''
     };
+  }
+
+  signUp(){
+    firebase.auth().createUserWithEmailAndPassword(this.state.username, this.state.password).then(this.props.navigation.navigate('login'))
+    console.log(this.state.username);
   }
 
   render() {
@@ -43,7 +52,7 @@ export default class signupForm extends Component {
             //underlineColorAndroid="transparent"
             onChangeText={(password) => this.setState({ password })}
             style={styles.input} />
-          <TouchableOpacity style={styles.buttonContainer}>
+          <TouchableOpacity onPress={this.signUp} style={styles.buttonContainer}>
           <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>

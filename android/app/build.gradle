@@ -137,6 +137,9 @@ android {
 }
 
 dependencies {
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
     api fileTree(dir: "libs", include: ["*.jar"])
     api "com.android.support:appcompat-v7:25.0.0"
     api "com.facebook.react:react-native:+"  // From node_modules
