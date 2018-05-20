@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, ToastAndroid, Button, TextInput, Select, Picker } from 'react-native';
+import { View, Text, Image, StyleSheet, ToastAndroid, Button, TextInput, Select, Picker,TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 export default class summary extends Component {
   constructor(props) {
     super(props);
     this._cancel = this._cancel.bind(this);
+    this._order = this._order.bind(this);
     this.state = {
       mapRegion: null,
       lastLat: 0,
@@ -23,93 +24,122 @@ export default class summary extends Component {
     this.props.navigation.navigate('Maps');
    }
 
+  _order(){
+    ToastAndroid.show('Order made!', ToastAndroid.SHORT);
+  }
+
   render() {
     return (
-      < View style={styles.overlay} >
+      <View style={styles.gifBackLayout}>
+      <View style={styles.overlay}>
+      <View style={styles.innerRow}>
+          <View style={{ width: '100%',overflow:'hidden', paddingTop:10}}>
+            <Text style={{textAlign:'center',fontSize:20, fontFamily:'Open Sans',fontWeight:'bold',color:'#0be881'}}>Customize Your Delivery</Text>
+          </View>
+        </View>
         <View style={styles.innerRow}>
-          <View style={{ width: '75%' }}>
-            <Text>Choose item to be picked up</Text>
+          <View style={{ width: '100%',overflow:'hidden',paddingTop:20 }}>
+            <Text>    Select Item Type</Text>
+          </View>
+        </View>
+        <View style={styles.innerRow}>
+          <View style={{ width: '100%', borderRadius: 150,overflow:'hidden' }}>
             <Picker
               selectedValue={this.state.pickupItem}
-              style={{ width: '100%' }}
+              style={{ width: '100%', backgroundColor: '#1e272e7F', color:'#ffffffBF'}}
               onValueChange={(itemValue, itemIndex) => this.setState({ pickupItem: itemValue })}
               underlineColorAndroid="black">
-              <Picker.Item label="Cell Phone" value="cellPhone" />
-              <Picker.Item label="Item 1" value="item1" />
-              <Picker.Item label="Item 2" value="item2" />
-              <Picker.Item label="Item 3" value="item3" />
-              <Picker.Item label="Item 4" value="item4" />
+              <Picker.Item label="  Cell Phone" value="cellPhone" />
+              <Picker.Item label="  Item 1" value="item1" />
+              <Picker.Item label="  Item 2" value="item2" />
+              <Picker.Item label="  Item 3" value="item3" />
+              <Picker.Item label="  Item 4" value="item4" />
             </Picker>
           </View>
-          <View style={{ width: '25%' }}>
-            <Text>Cost</Text>
+        </View>
+        
+        <View style={styles.innerRow}>
+          <View style={{width: '100%',overflow:'hidden', paddingTop:10, paddingLeft:5,paddingRight:5,borderRadius:10  }}>
             <TextInput
-              placeholder="Kr"
-              placeholderTextColor="#000000ff"
-              underlineColorAndroid="black"
-              style={{ width: '100%' }}
-              onChangeText={(cost) => this.setState({ cost })}
-            />
+              multiline={true}
+              placeholder=" Enter Item Description ..."
+              placeholderTextColor="#ffffffBF"
+              underlineColorAndroid="transparent"
+              style={{color: '#FFF', width: '100%',height:150,backgroundColor: '#1e272eBF',textAlignVertical:'top'}} />
           </View>
         </View>
         <View style={styles.innerRow}>
-          <View style={{ width: '75%' }}>
-            <Text>Choose delivery address</Text>
-            <Picker
-              selectedValue={this.state.deliveryAddress}
-              style={{ width: '100%' }}
-              onValueChange={(itemValue, itemIndex) => this.setState({ deliveryAddress: itemValue })}
-              underlineColorAndroid="black">
-              <Picker.Item label="PRESTESTIEN 52 - 5118 Ulset" value="address0" />
-              <Picker.Item label="Address 1" value="address1" />
-              <Picker.Item label="Address 2" value="address2" />
-              <Picker.Item label="Address 3" value="address3" />
-              <Picker.Item label="Address 4" value="address4" />
-            </Picker>
+          <View style={{ width: '100%',overflow:'hidden', paddingTop:10}}>
+            <Text>    Select Pickup Time</Text>
           </View>
-          <View style={{ width: '25%' }}>
-            <Text>Pickup time</Text>
+        </View>
+        <View style={styles.innerRow}>
+          <View style={{ width: '100%', borderRadius: 150,overflow:'hidden' }}>
             <Picker
               selectedValue={this.state.pickupTime}
-              style={{ width: '100%' }}
+              style={{ width: '100%', backgroundColor: '#1e272e7F', color:'#ffffffBF' }}
               onValueChange={(itemValue, itemIndex) => this.setState({ pickupTime: itemValue })}
               underlineColorAndroid="black">
-              <Picker.Item label="ASAP" value="time0" />
-              <Picker.Item label="Time 1" value="time1" />
-              <Picker.Item label="Time 2" value="time2" />
-              <Picker.Item label="Time 3" value="time3" />
-              <Picker.Item label="Time 4" value="time4" />
+              <Picker.Item label="  ASAP" value="time0" />
+              <Picker.Item label="  Time 1" value="time1" />
+              <Picker.Item label="  Time 2" value="time2" />
+              <Picker.Item label="  Time 3" value="time3" />
+              <Picker.Item label="  Time 4" value="time4" />
             </Picker>
           </View>
         </View>
         <View style={styles.innerRow}>
-          <View style={{ width: '75%' }}>
-            <Text>Payment method</Text>
+          <View style={{ width: '100%',overflow:'hidden', paddingTop:10}}>
+            <Text>    Select Payment Method</Text>
+          </View>
+        </View>
+        <View style={styles.innerRow}>
+          <View style={{ width: '100%', borderRadius: 150,overflow:'hidden' }}>
             <Picker
               selectedValue={this.state.paymentMethod}
-              style={{ width: '100%' }}
+              style={{ width: '100%', backgroundColor: '#1e272e7F', color:'#ffffffBF'  }}
               onValueChange={(itemValue, itemIndex) => this.setState({ paymentMethod: itemValue })}
               underlineColorAndroid="black">
-              <Picker.Item label="VIPPS" value="address0" />
-              <Picker.Item label="Payment Method 1" value="payment1" />
-              <Picker.Item label="Payment Method 2" value="payment2" />
-              <Picker.Item label="Payment Method 3" value="payment3" />
-              <Picker.Item label="Payment Method 4" value="payment4" />
+              <Picker.Item label="  VIPPS" value="address0" />
+              <Picker.Item label="  Payment Method 1" value="payment1" />
+              <Picker.Item label="  Payment Method 2" value="payment2" />
+              <Picker.Item label="  Payment Method 3" value="payment3" />
+              <Picker.Item label="  Payment Method 4" value="payment4" />
             </Picker>
           </View>
         </View>
-        <Button onPress={this._cancel} title='back to Map'
-          color='#4a8ce2'
-        />
-      </View >
+        <View style={styles.innerRow}>
+          <View style={{ width: '100%',overflow:'hidden', paddingTop:40}}>
+          </View>
+        </View>
+        <View style={styles.innerRow}>
+          <View style={{ width: '20%'}}>
+            <TouchableOpacity
+              style={{justifyContent:'center',borderTopLeftRadius:20,borderBottomLeftRadius:20,height:60,width:'100%',padding:5,alignItems:'center',backgroundColor:'#ff5e57'}}
+              onPress={this._cancel}
+            >
+              <Text style={{color:'#ffffff',textAlign:'center'}}> Back </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{ width: '80%'}}>
+            <TouchableOpacity
+              style={{justifyContent:'center',borderTopRightRadius:20,borderBottomRightRadius:20,height:60,width:'100%',padding:5,alignItems:'center',backgroundColor:'#0be881'}}
+              onPress={this._order}
+            >
+              <Text style={{color:'#ffffff',textAlign:'center'}}> Send Order </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+       </View>  
+      </View> 
     );
   }
 }
 const styles = StyleSheet.create({
   overlay: {
-    justifyContent: 'flex-end',
-    zIndex: 0,
-    backgroundColor: '#ffffffff',
+    justifyContent: 'center',
+    zIndex: 1,
+    backgroundColor: '#ffffff7F',
     width: '100%',
     paddingHorizontal: 10,
     paddingVertical: 15
@@ -117,5 +147,13 @@ const styles = StyleSheet.create({
   innerRow: {
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  gifBackLayout:{
+    flex:1,
+    zIndex:0,
+    justifyContent:'center',
+    zIndex: 0,
+    width: '100%',
+    backgroundColor:'#1e272e'
   }
 });
