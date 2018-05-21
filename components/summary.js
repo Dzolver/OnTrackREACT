@@ -33,20 +33,20 @@ export default class summary extends Component {
       <View style={styles.gifBackLayout}>
       <View style={styles.overlay}>
       <View style={styles.innerRow}>
-          <View style={{ width: '100%',overflow:'hidden', paddingTop:10}}>
-            <Text style={{textAlign:'center',fontSize:20, fontFamily:'Open Sans',fontWeight:'bold',color:'#0be881'}}>Customize Your Delivery</Text>
+          <View style={{ width: '100%',overflow:'hidden'}}>
+            <Text style={{textAlign:'center',fontSize:20, fontFamily:'Open Sans',fontWeight:'bold',color:'#ffffff'}}>Customize Your Delivery</Text>
           </View>
         </View>
         <View style={styles.innerRow}>
-          <View style={{ width: '100%',overflow:'hidden',paddingTop:20 }}>
-            <Text>    Select Item Type</Text>
+          <View style={{ width: '100%',overflow:'hidden',paddingTop:20,paddingBottom:5}}>
+            <Text style={{color:'#ffffff'}}>    Select Item Type</Text>
           </View>
         </View>
         <View style={styles.innerRow}>
           <View style={{ width: '100%', borderRadius: 150,overflow:'hidden' }}>
             <Picker
               selectedValue={this.state.pickupItem}
-              style={{ width: '100%', backgroundColor: '#1e272e7F', color:'#ffffffBF'}}
+              style={{ width: '100%', backgroundColor: '#070707BF', color:'#ffffff'}}
               onValueChange={(itemValue, itemIndex) => this.setState({ pickupItem: itemValue })}
               underlineColorAndroid="black">
               <Picker.Item label="  Cell Phone" value="cellPhone" />
@@ -65,19 +65,19 @@ export default class summary extends Component {
               placeholder=" Enter Item Description ..."
               placeholderTextColor="#ffffffBF"
               underlineColorAndroid="transparent"
-              style={{color: '#FFF', width: '100%',height:150,backgroundColor: '#1e272eBF',textAlignVertical:'top'}} />
+              style={{color: '#FFF', width: '100%',height:150,backgroundColor: '#0707077F',textAlignVertical:'top'}} />
           </View>
         </View>
         <View style={styles.innerRow}>
-          <View style={{ width: '100%',overflow:'hidden', paddingTop:10}}>
-            <Text>    Select Pickup Time</Text>
+          <View style={{ width: '100%',overflow:'hidden', paddingTop:10,paddingBottom:5}}>
+            <Text style={{color:'#ffffff'}}>    Select Pickup Time</Text>
           </View>
         </View>
         <View style={styles.innerRow}>
           <View style={{ width: '100%', borderRadius: 150,overflow:'hidden' }}>
             <Picker
               selectedValue={this.state.pickupTime}
-              style={{ width: '100%', backgroundColor: '#1e272e7F', color:'#ffffffBF' }}
+              style={{ width: '100%', backgroundColor: '#070707BF', color:'#ffffff' }}
               onValueChange={(itemValue, itemIndex) => this.setState({ pickupTime: itemValue })}
               underlineColorAndroid="black">
               <Picker.Item label="  ASAP" value="time0" />
@@ -89,15 +89,15 @@ export default class summary extends Component {
           </View>
         </View>
         <View style={styles.innerRow}>
-          <View style={{ width: '100%',overflow:'hidden', paddingTop:10}}>
-            <Text>    Select Payment Method</Text>
+          <View style={{ width: '100%',overflow:'hidden', paddingTop:10,paddingBottom:5}}>
+            <Text style={{color:'#ffffff'}}>    Select Payment Method</Text>
           </View>
         </View>
         <View style={styles.innerRow}>
           <View style={{ width: '100%', borderRadius: 150,overflow:'hidden' }}>
             <Picker
               selectedValue={this.state.paymentMethod}
-              style={{ width: '100%', backgroundColor: '#1e272e7F', color:'#ffffffBF'  }}
+              style={{ width: '100%', backgroundColor: '#070707BF', color:'#ffffff'  }}
               onValueChange={(itemValue, itemIndex) => this.setState({ paymentMethod: itemValue })}
               underlineColorAndroid="black">
               <Picker.Item label="  VIPPS" value="address0" />
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   overlay: {
     justifyContent: 'center',
     zIndex: 1,
-    backgroundColor: '#ffffff7F',
+    backgroundColor: '#1e272e',
     width: '100%',
     paddingHorizontal: 10,
     paddingVertical: 15
