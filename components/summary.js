@@ -43,10 +43,14 @@ export default class summary extends Component {
           </View>
         </View>
         <View style={styles.innerRow}>
-          <View style={{ width: '100%', borderRadius: 150,overflow:'hidden' }}>
+          <View style={{ width: '15%',overflow:'hidden',paddingTop:20,paddingBottom:5,backgroundColor:"#1e272e"}}>
+            <Image style={styles.symbols} source={require('./images/item.png')} />
+          </View>
+        
+          <View style={{ width: '85%', borderWidth: 1, borderColor: '#ffffff40', borderBottomRightRadius: 150,borderTopRightRadius: 150,overflow:'hidden'}>
             <Picker
               selectedValue={this.state.pickupItem}
-              style={{ width: '100%', backgroundColor: '#070707BF', color:'#ffffff'}}
+              style={{ width: '100%', backgroundColor: '#07070740', color:'#ffffff'}}
               onValueChange={(itemValue, itemIndex) => this.setState({ pickupItem: itemValue })}
               underlineColorAndroid="black">
               <Picker.Item label="  Cell Phone" value="cellPhone" />
@@ -63,7 +67,7 @@ export default class summary extends Component {
             <TextInput
               multiline={true}
               placeholder=" Enter Item Description ..."
-              placeholderTextColor="#ffffffBF"
+              placeholderTextColor="#ffffff40"
               underlineColorAndroid="transparent"
               style={{color: '#FFF', width: '100%',height:150,backgroundColor: '#0707077F',textAlignVertical:'top'}} />
           </View>
@@ -74,10 +78,13 @@ export default class summary extends Component {
           </View>
         </View>
         <View style={styles.innerRow}>
-          <View style={{ width: '100%', borderRadius: 150,overflow:'hidden' }}>
+        <View style={{ width: '15%',overflow:'hidden',paddingTop:20,paddingBottom:5,backgroundColor:"#1e272e"}}>
+            <Image style={styles.symbols} source={require('./images/time.png')} />
+          </View>
+          <View style={{ width: '85%', borderWidth: 1, borderColor: '#ffffff40',borderBottomRightRadius: 150,borderTopRightRadius: 150,overflow:'hidden' }}>
             <Picker
               selectedValue={this.state.pickupTime}
-              style={{ width: '100%', backgroundColor: '#070707BF', color:'#ffffff' }}
+              style={{ width: '100%', backgroundColor: '#07070740', color:'#ffffff' }}
               onValueChange={(itemValue, itemIndex) => this.setState({ pickupTime: itemValue })}
               underlineColorAndroid="black">
               <Picker.Item label="  ASAP" value="time0" />
@@ -94,10 +101,13 @@ export default class summary extends Component {
           </View>
         </View>
         <View style={styles.innerRow}>
-          <View style={{ width: '100%', borderRadius: 150,overflow:'hidden' }}>
+        <View style={{ width: '15%',overflow:'hidden',paddingTop:20,paddingBottom:5,backgroundColor:"#1e272e"}}>
+            <Image style={styles.symbols} source={require('./images/payment.png')} />
+          </View>
+          <View style={{ width: '85%',borderWidth: 1, borderColor: '#ffffff40',borderBottomRightRadius: 150,borderTopRightRadius: 150,overflow:'hidden' }}>
             <Picker
               selectedValue={this.state.paymentMethod}
-              style={{ width: '100%', backgroundColor: '#070707BF', color:'#ffffff'  }}
+              style={{ width: '100%', backgroundColor: '#07070740', color:'#ffffff'  }}
               onValueChange={(itemValue, itemIndex) => this.setState({ paymentMethod: itemValue })}
               underlineColorAndroid="black">
               <Picker.Item label="  VIPPS" value="address0" />
@@ -155,5 +165,11 @@ const styles = StyleSheet.create({
     zIndex: 0,
     width: '100%',
     backgroundColor:'#1e272e'
+  },
+  symbols: {
+    width:25,
+    height:25,
+    marginBottom:20,
+    marginLeft:10
   }
 });
