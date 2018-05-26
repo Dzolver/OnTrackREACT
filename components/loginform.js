@@ -52,6 +52,8 @@ export default class LoginFormWrapper extends Component {
             underlineColorAndroid="transparent"
             onChangeText={(username) => this.setState({ username })}
             style={styles.input} />
+        </View>
+        <View style={styles.container}>
           <TextInput
             placeholder="Password"
             placeholderTextColor="rgba(255,255,255,0.7)"
@@ -59,15 +61,15 @@ export default class LoginFormWrapper extends Component {
             secureTextEntry={true}
             onChangeText={(password) => this.setState({ password })}
             style={styles.input} />
-          <View style={{marginBottom:10}}>
-            <Button onPress={this._checkDetails} title='login' />
-          </View>
-          <View style={{marginBottom:10}}>
-            <Button onPress={this._startSignUp} title='First Time? Sign Up!'
-            color = '#05c46b'
-              />
-          </View>
         </View>
+
+          <View style={{marginBottom:10,marginHorizontal:40}}>
+            <Button onPress={this._checkDetails} title='login'/>
+          </View>
+          <View style={{marginBottom:30,marginHorizontal:40}}>
+            <Button onPress={this._startSignUp} title='First Time? Sign Up!' color = '#05c46b'/>
+          </View>
+        
       </View>
     );
   }
@@ -75,19 +77,28 @@ export default class LoginFormWrapper extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
+    paddingHorizontal: 15,
+    paddingBottom:15,
+    borderRadius: 20,
+    justifyContent:'center',
+    alignItems:'center'
   },
   input: {
     height: 40,
-    backgroundColor: 'rgba(30,39,46,0.7)',
-    marginBottom: 20,
+    backgroundColor: '#07070740',
     color: '#FFF',
+    borderRadius: 20,
+    width:270,
+    marginLeft:10,
+    marginRight:10,
     paddingHorizontal: 10,
+    textAlign:'center',
+    fontFamily:'Quicksand-Light'
   },
   backgroundcontainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#1e272e',
   },
   userlabel: {
     justifyContent: 'center',
@@ -104,7 +115,7 @@ const styles = StyleSheet.create({
   },
   maincontainer: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#1e272e',
   },
   logo: {
     width: 200,
