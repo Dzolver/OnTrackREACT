@@ -13,6 +13,7 @@
     "react-native-firebase": "^4.2.0",
     "react-native-geocoding": "^0.3.0",
     "react-native-maps": "^0.21.0",
+    "react-native-popup-dialog": "^0.11.46",
     "react-native-router-flux": "^4.0.0-beta.28",
     "react-native-swipe-navigation": "^1.0.0-beta",
     "react-navigation": "^1.5.12",
@@ -30,5 +31,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./components/assets/fonts/quicksand"
+    ]
   }
 }

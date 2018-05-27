@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -40,7 +39,19 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A76EC732F9EB41AF98F9E1FD /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFEFCB1C58B489A827FE1AD /* libRNFirebase.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+<<<<<<< HEAD
 		C6B2FCFA20B0C8620072522C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6B2FCD220B0C8620072522C /* GoogleService-Info.plist */; };
+=======
+		6DFDB7519E7E4ADB8FE031C7 /* quicksand.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C61163618A1F4EF6AB94BBD6 /* quicksand.jpg */; };
+		07E879F1EC2541E8BE6EA323 /* specimenposter_4967.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EA619F45EC14212932E1A7B /* specimenposter_4967.jpg */; };
+		540196F5C5B14399823428D6 /* Quicksand_Dash.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44EBD7A7DC4D470394FD1178 /* Quicksand_Dash.otf */; };
+		297185337FF945118291BB0F /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 400D2807990A459EA9605105 /* Quicksand-Bold.otf */; };
+		3B60783C9B6E4A069C3695EF /* Quicksand-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD205FD7D02C47568DBE1210 /* Quicksand-BoldItalic.otf */; };
+		DF4E431BEE32449780391E00 /* Quicksand-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE255E020C70497BA6AD546C /* Quicksand-Italic.otf */; };
+		9D028562EF4D458A9425E7D9 /* Quicksand-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED029217AF6B436EA65A4F88 /* Quicksand-Light.otf */; };
+		C790B93E58BB4C4991F8B885 /* Quicksand-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 274FBC3FB34943CFA7C85BAB /* Quicksand-LightItalic.otf */; };
+		60DC769BB1BF4969932F1D70 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B13FDB06642E4897A0E3762C /* Quicksand-Regular.otf */; };
+>>>>>>> master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -367,7 +378,19 @@
 		B69D8B1C385D568EE5B73F38 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B2FCD220B0C8620072522C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D22C5145D329486BA0E27828 /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		DBFEFCB1C58B489A827FE1AD /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
+=======
+		C61163618A1F4EF6AB94BBD6 /* quicksand.jpg */ = {isa = PBXFileReference; name = "quicksand.jpg"; path = "../components/assets/fonts/quicksand/quicksand.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5EA619F45EC14212932E1A7B /* specimenposter_4967.jpg */ = {isa = PBXFileReference; name = "specimenposter_4967.jpg"; path = "../components/assets/fonts/quicksand/specimenposter_4967.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		44EBD7A7DC4D470394FD1178 /* Quicksand_Dash.otf */ = {isa = PBXFileReference; name = "Quicksand_Dash.otf"; path = "../components/assets/fonts/quicksand/Quicksand_Dash.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		400D2807990A459EA9605105 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; name = "Quicksand-Bold.otf"; path = "../components/assets/fonts/quicksand/Quicksand-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AD205FD7D02C47568DBE1210 /* Quicksand-BoldItalic.otf */ = {isa = PBXFileReference; name = "Quicksand-BoldItalic.otf"; path = "../components/assets/fonts/quicksand/Quicksand-BoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FE255E020C70497BA6AD546C /* Quicksand-Italic.otf */ = {isa = PBXFileReference; name = "Quicksand-Italic.otf"; path = "../components/assets/fonts/quicksand/Quicksand-Italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ED029217AF6B436EA65A4F88 /* Quicksand-Light.otf */ = {isa = PBXFileReference; name = "Quicksand-Light.otf"; path = "../components/assets/fonts/quicksand/Quicksand-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		274FBC3FB34943CFA7C85BAB /* Quicksand-LightItalic.otf */ = {isa = PBXFileReference; name = "Quicksand-LightItalic.otf"; path = "../components/assets/fonts/quicksand/Quicksand-LightItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B13FDB06642E4897A0E3762C /* Quicksand-Regular.otf */ = {isa = PBXFileReference; name = "Quicksand-Regular.otf"; path = "../components/assets/fonts/quicksand/Quicksand-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+>>>>>>> master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -611,6 +634,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				C63B0AA72098CBAF0003B81B /* Recovered References */,
 				A9400B233B5C7C5E0CBD5339 /* Pods */,
+				1EF149284B094E458263E9E1 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -663,6 +687,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		C6B2FCB120B0C5CB0072522C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,6 +695,24 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+=======
+		1EF149284B094E458263E9E1 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				C61163618A1F4EF6AB94BBD6 /* quicksand.jpg */,
+				5EA619F45EC14212932E1A7B /* specimenposter_4967.jpg */,
+				44EBD7A7DC4D470394FD1178 /* Quicksand_Dash.otf */,
+				400D2807990A459EA9605105 /* Quicksand-Bold.otf */,
+				AD205FD7D02C47568DBE1210 /* Quicksand-BoldItalic.otf */,
+				FE255E020C70497BA6AD546C /* Quicksand-Italic.otf */,
+				ED029217AF6B436EA65A4F88 /* Quicksand-Light.otf */,
+				274FBC3FB34943CFA7C85BAB /* Quicksand-LightItalic.otf */,
+				B13FDB06642E4897A0E3762C /* Quicksand-Regular.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
+>>>>>>> master
 		};
 /* End PBXGroup section */
 
@@ -1141,7 +1184,19 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+<<<<<<< HEAD
 				C6B2FCFA20B0C8620072522C /* GoogleService-Info.plist in Resources */,
+=======
+				6DFDB7519E7E4ADB8FE031C7 /* quicksand.jpg in Resources */,
+				07E879F1EC2541E8BE6EA323 /* specimenposter_4967.jpg in Resources */,
+				540196F5C5B14399823428D6 /* Quicksand_Dash.otf in Resources */,
+				297185337FF945118291BB0F /* Quicksand-Bold.otf in Resources */,
+				3B60783C9B6E4A069C3695EF /* Quicksand-BoldItalic.otf in Resources */,
+				DF4E431BEE32449780391E00 /* Quicksand-Italic.otf in Resources */,
+				9D028562EF4D458A9425E7D9 /* Quicksand-Light.otf in Resources */,
+				C790B93E58BB4C4991F8B885 /* Quicksand-LightItalic.otf in Resources */,
+				60DC769BB1BF4969932F1D70 /* Quicksand-Regular.otf in Resources */,
+>>>>>>> master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
