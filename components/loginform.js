@@ -17,10 +17,16 @@ export default class LoginFormWrapper extends Component {
     super(props);                                         // grab props from app component, if needed
     this._startSignUp = this._startSignUp.bind(this);
     this._checkDetails = this._checkDetails.bind(this);   // bind method 'this' to component 'this', to reference 'this.state' properly
+    this.signIn = this.signIn.bind(this);
     this.state = {                                        // declare component state (note use of 'this' keyword)
       username: '',
       password: ''
     };
+  }
+
+  signIn(){
+    firebase.auth().signInWithEmailAndPassword(this.state.username, this.state.password).then(this.props.navigation.navigate('Maps'))
+    console.log(this.state.username);
   }
 
   _checkDetails() {
