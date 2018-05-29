@@ -7,7 +7,7 @@ export default class Cover extends Component<Props> {
     return (
       <View style = {styles.container}>
         <Text style = {styles.welcome}>
-          ONTRACK
+          OnTrack
         </Text>
         <Text style ={styles.instructions}>
           Your Best Delivery Pal!
@@ -30,11 +30,10 @@ const styles = StyleSheet.create({
     welcome : {
       fontSize : 60,
       color : '#0be881',
-      fontFamily:'Quicksand-Regular'
+      fontWeight : 'bold',
     },
     instructions : {
       fontSize : 20,
-      fontFamily:'Quicksand-Light',
       color : '#05c46b',
     },
     activity : {
