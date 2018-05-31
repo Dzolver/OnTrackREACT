@@ -14,6 +14,8 @@ export default class Googlemap extends Component {
       mapRegion: null,
       lastLat: 0,
       lastLong: 0,
+      deliveryLat: 0,
+      deliveryLng: 0,
       formattedAddress: 'Please Wait',
 
       pickupItem: null,
@@ -72,6 +74,24 @@ export default class Googlemap extends Component {
         .catch(error => console.log(error));
     }
   }
+  reverseAddressDelivery(address) {
+    if (Geocoder) {
+      Geocoder.from(address)
+        .then(json => {
+          console.log(json.results[0].geometry.location);
+          this.state.deliveryLat = json.results[0].geometry.location.lat;
+          this.state.deliveryLng = json.results[0].geometry.location.lng;
+          let region = {
+            latitude: this.state.lastLat,
+            longitude: this.state.lastLong,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01
+          };
+          this.setState({ mapRegion: region });
+        })
+        .catch(error => console.log(error));
+    }
+  }
   reverseLocation(latitude, longitude) {
     Geocoder.from(latitude, longitude)
       .then(json => {
@@ -91,13 +111,21 @@ export default class Googlemap extends Component {
             <Text style={styles.overlayText} >Enter pickup and delivery addresses:</Text>
             <TextInput
               placeholder="Pickup Address"
-              placeholderTextColor="rgba(255,255,255,0.7)"
+              placeholderTextColor="rgb(120,120,120)"
               underlineColorAndroid="transparent"
               onChangeText={(formattedAddress) => {
                 this.setState({ formattedAddress });
                 this.reverseAddress(formattedAddress);
               }}
               value={this.state.formattedAddress}
+              style={styles.input} />
+            <TextInput
+              placeholder="Delivery Address"
+              placeholderTextColor="rgb(120,120,120)"
+              underlineColorAndroid="transparent"
+              onChangeText={(deliveryAddress) => {
+                this.reverseAddressDelivery(deliveryAddress);
+              }}
               style={styles.input} />
           </View >
 
@@ -113,8 +141,16 @@ export default class Googlemap extends Component {
                 latitude: this.state.lastLat,
                 longitude: this.state.lastLong
               }}
-              title={'Your Location'}
-              description={'This is your latest location'}
+              title={'Pickup Address'}
+              description={'This is where the package will be received'}
+            />
+            <MapView.Marker
+              coordinate={{
+                latitude: this.state.deliveryLat,
+                longitude: this.state.deliveryLng
+              }}
+              title={'Delivery Address'}
+              description={'This is where the package will be delivered'}
             />
           </MapView>
         </View>
