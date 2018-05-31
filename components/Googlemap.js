@@ -42,7 +42,7 @@ export default class Googlemap extends Component {
       this.reverseLocation(region.latitude, region.longitude);
     }, (error) => {
       ToastAndroid.show('Please turn on your GPS and mobile data!', ToastAndroid.SHORT);
-      this._navigate('LoginForm');
+      this.props.navigation.navigate('LoginForm');
     });
   }
   onRegionChange(region, lastLatitude, lastLongitude) {
