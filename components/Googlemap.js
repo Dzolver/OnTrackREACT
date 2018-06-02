@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, ToastAndroid, Button, TextInput, Select, Picker } from 'react-native';
+import { View, Text, Image, StyleSheet, ToastAndroid, Button, TextInput, Select, Picker,TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
+import MapViewDirections from 'react-native-maps-directions';
 import { StackNavigator } from 'react-navigation';
 import Geocoder from 'react-native-geocoding';
 
@@ -11,6 +12,7 @@ export default class Googlemap extends Component {
     super(props);
     this.orderCar = this.orderCar.bind(this);
     this.state = {
+      track:true,
       mapRegion: null,
       lastLat: 0,
       lastLong: 0,
@@ -31,6 +33,7 @@ export default class Googlemap extends Component {
   }
 
   componentDidMount() {
+    if(this.state.track === true){
     this.watchID = navigator.geolocation.watchPosition((position) => {
       // Create the object to update this.state.mapRegion through the onRegionChange function
       let region = {
@@ -39,15 +42,27 @@ export default class Googlemap extends Component {
         latitudeDelta: 0.01,
         longitudeDelta: 0.01
       }
+    this.setState({
+              deliveryLat:this.state.lastLat,
+              deliveryLng:this.state.lastLong
+            });
       Geocoder.init('AIzaSyBENmQq52QW2sdc19lv7tDTpVGkeYz23ks');
-      this.onRegionChange(region, region.latitude, region.longitude);
+      
+      if(this.state.track === true){
+        this.onRegionChange(region, region.latitude, region.longitude);
+      }
       this.reverseLocation(region.latitude, region.longitude);
+      this.setState({
+        track : false
+      });
       //this.reverseAddress(this.state.formattedAddress);
-    }, (error) => {
+    } , (error) => {
       ToastAndroid.show('Please turn on your GPS and mobile data!', ToastAndroid.SHORT);
       this.props.navigation.navigate('LoginForm');
     });
-  }
+    }
+  } 
+  
   onRegionChange(region, lastLatitude, lastLongitude) {
     this.setState({
       mapRegion: region,
@@ -55,6 +70,7 @@ export default class Googlemap extends Component {
       lastLat: lastLatitude || this.state.lastLat,
       lastLong: lastLongitude || this.state.lastLong
     });
+    ToastAndroid.show('Location Update!', ToastAndroid.SHORT);
   }
   reverseAddress(address) {
     if (Geocoder) {
@@ -95,46 +111,49 @@ export default class Googlemap extends Component {
   reverseLocation(latitude, longitude) {
     Geocoder.from(latitude, longitude)
       .then(json => {
-        this.setState({ formattedAddress: json.results[0].formatted_address });
+        this.setState({ formattedAddress: json.results[0].formatted_address});
       })
       .catch(error => console.warn(error));
   }
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchID);
   }
-
   render() {
     return (
       <View style={styles.backgroundcontainer}>
-        <View style={styles.innerView}>
-          <View style={styles.overlay} >
-            <Text style={styles.overlayText} >Enter pickup and delivery addresses:</Text>
+        
+        <Image style={styles.pickUpSymbol} source={require('./images/pickup.png')} />
+        <Image style={styles.deliverySymbol} source={require('./images/shipping.png')} />
+        <View style={styles.TOPoverlay} >
             <TextInput
+              autoCorrect={false}
               placeholder="Pickup Address"
-              placeholderTextColor="rgb(120,120,120)"
+              placeholderTextColor='#ffffff'
               underlineColorAndroid="transparent"
               onChangeText={(formattedAddress) => {
-                this.setState({ formattedAddress });
+                this.setState({ formattedAddress});
+                this.setState({ track:false })
                 this.reverseAddress(formattedAddress);
-              }}
+                }}
               value={this.state.formattedAddress}
               style={styles.input} />
             <TextInput
               placeholder="Delivery Address"
-              placeholderTextColor="rgb(120,120,120)"
+              placeholderTextColor="#ffffff"
               underlineColorAndroid="transparent"
               onChangeText={(deliveryAddress) => {
                 this.reverseAddressDelivery(deliveryAddress);
+                this.setState({ track : false })
               }}
               style={styles.input} />
           </View >
-
-
+           
+          <View style={styles.mapContainer}>
           {/* MapView */}
           <MapView style={styles.map}
             region={this.state.mapRegion}
             showsUserLocation={true}
-            followUserLocation={true}
+            followUserLocation={false}
           >
             <MapView.Marker
               coordinate={{
@@ -152,15 +171,28 @@ export default class Googlemap extends Component {
               title={'Delivery Address'}
               description={'This is where the package will be delivered'}
             />
+            <MapViewDirections
+            origin={{latitude:this.state.lastLat,longitude:this.state.lastLong}}
+            destination={{latitude:this.state.deliveryLat,longitude:this.state.deliveryLng}}
+            apikey={"AIzaSyBENmQq52QW2sdc19lv7tDTpVGkeYz23ks"}
+            strokeColor="hotpink"
+            />
           </MapView>
         </View>
-
-        {/* Overlay */}
-        < View style={styles.overlay} >
-          <Button onPress={this.orderCar} title='Order car'
-            color='#4a8ce2'
-          />
-        </View >
+     
+              
+        < View style={styles.BOToverlay} >
+        <TouchableOpacity
+              style={{justifyContent:'center',borderRadius:30,height:60,padding:5,alignItems:'center',backgroundColor:'#1e272eBF'}}
+              onPress={
+                this.orderCar
+              }
+            >
+              <Text style={{color:'#ffffff',textAlign:'center',fontFamily:'Quicksand-Bold',fontSize:20}}> Start Order </Text>
+            </TouchableOpacity>
+      </View >
+    
+        
 
 
       </View>
@@ -179,6 +211,13 @@ const styles = StyleSheet.create({
     // right: 0,
     // bottom: 0,
   },
+  mapContainer:{
+    position:'absolute',
+    flex:1,
+    zIndex:1,
+    height:'100%',
+    width:'100%'
+  },
   map: {
     // position: 'absolute',
     // top: 0,
@@ -188,6 +227,22 @@ const styles = StyleSheet.create({
     // zIndex: 0
     width: '100%',
     flex: 1
+  },
+  pickUpSymbol: {
+    width:35,
+    height:35,
+    zIndex:3,
+    top:20,
+    left:10,
+    position:'absolute',
+  },
+  deliverySymbol:{
+    width:35,
+    height:35,
+    zIndex:4,
+    top:85,
+    left:10,
+    position:'absolute'
   },
   semitransparent: {
     // backgroundColor: '#c6c6c6bf',
@@ -199,9 +254,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 15
   },
-  innerView: {
-    width: '100%',
-    flex: 1
+  TOPoverlay:{
+    zIndex:2,
+    position:'absolute',
+    top:40,
+    left:10,
+    right:10
+  },
+  BOToverlay:{
+    zIndex:2,
+    position:'absolute',
+    bottom:10
+  },
+  pickupIcon:{
+    zIndex:3,
+    position:'absolute',
+    top:40,
+    left:0
   },
   overlayText: {
     color: 'white',
@@ -209,14 +278,14 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    backgroundColor: '#ffffff',
-    color: '#000000',
+    backgroundColor:'#1e272eBF',
+    color: '#ffffff',
     borderRadius: 20,
     // width: '100%',
     marginLeft: 10,
     marginRight: 10,
     marginTop: 5,
-    marginBottom: 5,
+    marginBottom: 20,
     //paddingHorizontal: 10,
     textAlign: 'center',
     fontFamily: 'Quicksand-Light'

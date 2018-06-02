@@ -24,7 +24,7 @@ export default class LoginFormWrapper extends Component {
   }
 
   _checkDetails() {
-    if (String(this.state.username) === 'user' && String(this.state.password) === '123') {          //reference state variable (note use of 'this.state.password', as opposed to 'this.state')
+    if (String(this.state.username) === 'User' && String(this.state.password) === '123') {          //reference state variable (note use of 'this.state.password', as opposed to 'this.state')
       //ToastAndroid.show('Success!', ToastAndroid.SHORT);
       Keyboard.dismiss();
       this.props.navigation.navigate('Maps');
