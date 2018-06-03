@@ -18,7 +18,7 @@ export default class Googlemap extends Component {
       lastLong: 0,
       deliveryLat: 0,
       deliveryLng: 0,
-      formattedAddress: 'Please Wait',
+      formattedAddress: null,
 
       pickupItem: null,
       cost: 0,
@@ -51,7 +51,7 @@ export default class Googlemap extends Component {
       if(this.state.track === true){
         this.onRegionChange(region, region.latitude, region.longitude);
       }
-      this.reverseLocation(region.latitude, region.longitude);
+      //this.reverseLocation(region.latitude, region.longitude);
       this.setState({
         track : false
       });

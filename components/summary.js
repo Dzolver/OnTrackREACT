@@ -79,6 +79,7 @@ export default class summary extends Component {
               placeholder=" Enter Item Description ..."
               placeholderTextColor="#ffffff40"
               underlineColorAndroid="transparent"
+              onChangeText={(itemDescription) => this.setState({itemDescription})}
               style={{color: '#FFF', width: '100%',height:150,backgroundColor: '#0707077F',textAlignVertical:'top'}} />
           </View>
         </View>
@@ -161,8 +162,10 @@ export default class summary extends Component {
             <Text>{paymentMethod}</Text>
             <Text>{this.props.navigation.state.params.pickup}</Text>
             <Text>{this.props.navigation.state.params.delivery}</Text>
+          </View>
+          <View style = {{position:'absolute',bottom:0,width:'100%'}}>  
             <TouchableOpacity
-              style={{justifyContent:'center',borderTopRightRadius:20,borderBottomRightRadius:20,height:60,padding:5,alignItems:'center',backgroundColor:'#0be881'}}
+              style={{justifyContent:'center',bottom:0,height:60,alignItems:'center',backgroundColor:'#0be881'}}
               onPress={()=>{
                 this._order();
               }}
