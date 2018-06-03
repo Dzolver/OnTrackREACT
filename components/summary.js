@@ -15,7 +15,8 @@ export default class summary extends Component {
       pickupItem: 'Cell Phone',
       itemDescription: 'No Item Description',
       cost: 0,
-      deliveryAddress: null,
+      pickupaddress: "default",
+      deliveryAddress: "default",
       pickupTime: 'ASAP',
       paymentMethod: 'VIPPS'
     };
@@ -158,6 +159,8 @@ export default class summary extends Component {
             <Text>{itemDescription}</Text>
             <Text>{pickupTime}</Text>
             <Text>{paymentMethod}</Text>
+            <Text>{this.props.navigation.state.params.pickup}</Text>
+            <Text>{this.props.navigation.state.params.delivery}</Text>
             <TouchableOpacity
               style={{justifyContent:'center',borderTopRightRadius:20,borderBottomRightRadius:20,height:60,padding:5,alignItems:'center',backgroundColor:'#0be881'}}
               onPress={()=>{

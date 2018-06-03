@@ -29,7 +29,7 @@ export default class Googlemap extends Component {
   }
 
   orderCar() {
-    this.props.navigation.navigate('summary');
+    this.props.navigation.navigate('summary',{pickup:this.state.formattedAddress,delivery:this.state.deliveryAddress});
   }
 
   componentDidMount() {
@@ -132,7 +132,7 @@ export default class Googlemap extends Component {
               underlineColorAndroid="transparent"
               onChangeText={(formattedAddress) => {
                 this.setState({ formattedAddress});
-                this.setState({ track:false })
+                this.setState({ track:false });
                 this.reverseAddress(formattedAddress);
                 }}
               value={this.state.formattedAddress}
@@ -143,7 +143,8 @@ export default class Googlemap extends Component {
               underlineColorAndroid="transparent"
               onChangeText={(deliveryAddress) => {
                 this.reverseAddressDelivery(deliveryAddress);
-                this.setState({ track : false })
+                this.setState({deliveryAddress});
+                this.setState({ track : false });
               }}
               style={styles.input} />
           </View >
