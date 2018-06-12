@@ -13,9 +13,16 @@ export default class summary extends Component {
 
       pickupItem: null,
       cost: 0,
+<<<<<<< HEAD
       deliveryAddress: null,
       pickupTime: null,
       paymentMethod: null
+=======
+      pickupaddress: "default",
+      deliveryAddress: "default",
+      pickupTime: 'ASAP',
+      paymentMethod: 'VIPPS'
+>>>>>>> master
     };
   }
 
@@ -27,6 +34,7 @@ export default class summary extends Component {
     return (
       < View style={styles.overlay} >
         <View style={styles.innerRow}>
+<<<<<<< HEAD
           <View style={{ width: '75%' }}>
             <Text>Choose item to be picked up</Text>
             <Picker
@@ -40,6 +48,16 @@ export default class summary extends Component {
               <Picker.Item label="Item 3" value="item3" />
               <Picker.Item label="Item 4" value="item4" />
             </Picker>
+=======
+          <View style={{width: '100%',overflow:'hidden', paddingTop:10, paddingLeft:5,paddingRight:5,borderRadius:20  }}>
+            <TextInput
+              multiline={true}
+              placeholder=" Enter Item Description ..."
+              placeholderTextColor="#ffffff40"
+              underlineColorAndroid="transparent"
+              onChangeText={(itemDescription) => this.setState({itemDescription})}
+              style={{color: '#FFF', width: '100%',height:150,backgroundColor: '#0707077F',textAlignVertical:'top'}} />
+>>>>>>> master
           </View>
           <View style={{ width: '25%' }}>
             <Text>Cost</Text>
@@ -98,10 +116,60 @@ export default class summary extends Component {
             </Picker>
           </View>
         </View>
+<<<<<<< HEAD
         <Button onPress={this._cancel} title='back to Map'
           color='#4a8ce2'
         />
       </View >
+=======
+        <View style={styles.innerRow}>
+          <View style={{ width: '100%',overflow:'hidden', paddingTop:40}}>
+          </View>
+        </View>
+        <View style={styles.innerRow}>
+          <View style={{ width: '25%', paddingLeft:10}}>
+            <TouchableOpacity
+              style={{justifyContent:'center',borderTopLeftRadius:20,borderBottomLeftRadius:20,height:60,width:'100%',padding:5,alignItems:'center',backgroundColor:'#ff5e57'}}
+              onPress={this._cancel}
+            >
+              
+              <Image style={{width:25,height:25}} source={require('./images/back.png')} />
+            </TouchableOpacity>
+          </View>
+          <View style={{ width: '75%',paddingRight:10}}>
+            <TouchableOpacity
+              style={{justifyContent:'center',borderTopRightRadius:20,borderBottomRightRadius:20,height:60,width:'100%',padding:5,alignItems:'center',backgroundColor:'#0be881'}}
+              onPress={()=>{
+                this.popupDialog.show();
+              }}
+            >
+              <Text style={{color:'#ffffff',textAlign:'center',fontFamily:'Quicksand-Bold',fontSize:20}}> Send Order </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <PopupDialog ref={(popupDialog) => { this.popupDialog = popupDialog;}} dialogAnimation={slideAnimation}>
+          <View>
+            <Text>{pickupItem}</Text>
+            <Text>{itemDescription}</Text>
+            <Text>{pickupTime}</Text>
+            <Text>{paymentMethod}</Text>
+            <Text>{this.props.navigation.state.params.pickup}</Text>
+            <Text>{this.props.navigation.state.params.delivery}</Text>
+          </View>
+          <View style = {{position:'absolute',bottom:0,width:'100%'}}>  
+            <TouchableOpacity
+              style={{justifyContent:'center',bottom:0,height:60,alignItems:'center',backgroundColor:'#0be881'}}
+              onPress={()=>{
+                this._order();
+              }}
+            >
+              <Text style={{color:'#ffffff',textAlign:'center',fontFamily:'Quicksand-Bold',fontSize:20}}> Confirm Order </Text>
+            </TouchableOpacity>
+          </View>
+        </PopupDialog>
+       </View>  
+      </View> 
+>>>>>>> master
     );
   }
 }
