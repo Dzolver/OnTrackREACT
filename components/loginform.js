@@ -29,7 +29,7 @@ export default class LoginFormWrapper extends Component {
       Keyboard.dismiss();
       this.props.navigation.navigate('Maps');
     } else {
-      //ToastAndroid.show('Failed!', ToastAndroid.SHORT);
+      ToastAndroid.show('Your login attempt has failed. Please retry.', ToastAndroid.SHORT);
     }
   }
 
